@@ -1,13 +1,35 @@
-package org.example.project
-
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.window.DialogWindow
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberDialogState
 
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "Dialogs",
     ) {
-        App()
+        var isDialogOpen by remember { mutableStateOf(false) }
+
+        Button(onClick = { isDialogOpen = true }) {
+            Text(text = "Cargar dialogo")
+        }
+
+        if (isDialogOpen) {
+            DialogWindow(
+                onCloseRequest = { isDialogOpen = false },
+                state = rememberDialogState(position = WindowPosition(Alignment.Center)),
+                title= "Dialogo"
+            ) {
+                //Aqui va lo que queremos que aparesca dentro de la ventana
+                Text("Hola mundo")
+            }
+        }
     }
 }
