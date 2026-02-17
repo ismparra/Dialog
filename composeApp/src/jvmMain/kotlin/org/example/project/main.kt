@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.DialogWindow
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
@@ -25,10 +26,11 @@ fun main() = application {
             DialogWindow(
                 onCloseRequest = { isDialogOpen = false },
                 state = rememberDialogState(position = WindowPosition(Alignment.Center)),
-                title= "Dialogo"
+                title= "Dialogo",
+                resizable = false
             ) {
                 //Aqui va lo que queremos que aparesca dentro de la ventana
-                Text("Hola mundo")
+                Text(text = "Hola mundo",color = Color.Blue)
             }
         }
     }
