@@ -1,0 +1,45 @@
+// Importamos los componentes básicos de Jetpack Compose para UI
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+
+// Importamos utilidades para manejar estados reactivos
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+
+// Importamos utilidades para alineación y ventanas de windows
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.window.DialogWindow
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
+import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberDialogState
+
+// Función principal punto de entrada de la aplicación
+fun main() = application {
+    // Creamos la ventana principal de la aplicación
+    Window(
+        onCloseRequest = ::exitApplication, // Al cerrar la ventana, se termina la aplicación
+    ) {
+        // Declaramos una variable de estado que controla si el diálogo está abierto o no
+        var isDialogOpen by remember { mutableStateOf(false) }
+
+        // Creamos un botón dentro de la ventana principal
+        Button(onClick = { isDialogOpen = true }) { // Al hacer clic, abrimos el diálogo
+            Text(text = "Cargar dialogo") // Texto que aparece en el botón
+        }
+
+        // Condición: si el diálogo está abierto, mostramos la ventana emergente
+        if (isDialogOpen) {
+            DialogWindow(
+                onCloseRequest = { isDialogOpen = false }, // Al cerrar el diálogo, cambiamos el estado a cerrado
+                state = rememberDialogState(position = WindowPosition(Alignment.Center)), // Posicionamos el diálogo en el centro
+                title= "Dialogo" // Título de la ventana de diálogo
+            ) {
+                // Aquí va el contenido que queremos mostrar dentro del diálogo 
+                Text("Hola mundo") // inprimimos un pequeño dialogo 
+            }
+        }
+    }
+}
