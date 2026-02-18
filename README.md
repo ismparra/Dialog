@@ -4,11 +4,9 @@
 * Marco Antonio Mora Rico.
 
 ## Conceptos aprendidos
-Implementación de una ventana arrastrable por medio de la implemetación del composable
-WindowDraggableArea() que se puede usar dentro de singleWindowApplication(), Window(),
-y DialogWindow() o sea solo composables.
+Implementación de una ventana de dialogo invocable por medio de la funciòn composable DialogWindow() 
 ## Resultados
-Una vez se implemento experimentamos con lo que podemos dibujar dentro de la ventana generada.
+Una vez se implemento experimentamos con lo que podemos dibujar dentro de la ventanita generada.
 ## Conclusiones
-El conocer este composable nos abre las puertas a la realización futura de menus arrastrables
-para proyectos mostrando ya sea sub menus o alertas/mensajes segun se vaya necesitando.
+El conocer este composable nos abre las puertas a la realización futura de menus de dialogo
+para proyectos mostrando ya sea mensajes informativo o alertas/mensajes segun se vaya necesitando.
